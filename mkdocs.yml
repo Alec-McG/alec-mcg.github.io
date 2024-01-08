@@ -1,7 +1,6 @@
 site_name: Dr. Alec McGregor
 theme:
   name: material
-  custom_dir: overrides
   favicon: images/favicon-face-only.png
   language: en
   #icon:
