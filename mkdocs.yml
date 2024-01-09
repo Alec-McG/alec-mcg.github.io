@@ -49,22 +49,31 @@ extra:
   generator: true
   social:
   - icon: fontawesome/brands/youtube
-    link: youtube.com
+    link: https://www.youtube.com/channel/UCPsM9Dlg6OGvWSYF2hVlm0A
   - icon: fontawesome/brands/twitter
     link: twitter.com
   - icon: fontawesome/brands/instagram
-    link: instagram.com 
+    link: www.instagram.com/aleclecleclec/
+  - icon: fontawesome/brands/linkedin
+    link: au.linkedin.com/in/alecmcg
 
 nav:
   - Home: index.md
+  - CV: cv.pdf
   - Photogrammetry:
     - photogrammetry/index.md
     - 'Basics': photogrammetry/basics.md
+    - 'Coral Reefs': photogrammetry/coralreefs.md
     - 'Shipwrecks': photogrammetry/shipwrecks.md
     - 'AUVs': photogrammetry/auvs.md
-  - Youtube: https://youtube.com
-  - Instagram: https://instagram.com
-  - Twitter: https://twitter.com
-  - Sketchfab: https://sketchfab.com
-  - Github: https://github.com
-  - Test: test1.md
+  - Robotic Positioning:
+    - roboticpositioning/index.md
+  - Publications and Research:
+    - publications/index.md
+  - Dive Log:
+    - divelog/dives_alec.html
+  - Blog:
+    - blog/index.md
+    - 'Perth Shore Dives': blog/shoredives.md
+
+
