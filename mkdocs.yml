@@ -21,6 +21,10 @@ theme:
     - navigation.tracking
     - navigation.tabs
 
+  markdown_extensions:
+    - attr_list
+    - md_in_html
+
   plugins:
     - typeset
     - search
@@ -53,25 +57,20 @@ extra:
   - icon: fontawesome/brands/twitter
     link: twitter.com
   - icon: fontawesome/brands/instagram
-    link: www.instagram.com/aleclecleclec/
+    link: https://www.instagram.com/aleclecleclec/
   - icon: fontawesome/brands/linkedin
     link: au.linkedin.com/in/alecmcg
 
 nav:
   - Home: index.md
   - CV: cv.pdf
-  - Photogrammetry:
-    - photogrammetry/index.md
-    - 'Basics': photogrammetry/basics.md
-    - 'Coral Reefs': photogrammetry/coralreefs.md
-    - 'Shipwrecks': photogrammetry/shipwrecks.md
-    - 'AUVs': photogrammetry/auvs.md
-  - Robotic Positioning:
-    - roboticpositioning/index.md
-  - Publications and Research:
-    - publications/index.md
-  - Dive Log:
-    - divelog/dives_alec.html
+  - Portfolios: 
+    - portfolios/index.md
+    - 'Photogrammetry': photogrammetry/index.md
+    - 'Robotic Positioning': roboticpositioning/index.md
+    - 'Dive Log': divelog/dives_alec.html
+    - 'Photography': photography/photography.md
+  - Publications and Research: publications/index.md
   - Blog:
     - blog/index.md
     - 'Perth Shore Dives': blog/shoredives.md
