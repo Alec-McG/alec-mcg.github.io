@@ -63,7 +63,7 @@ extra:
 
 nav:
   - Home: index.md
-  - CV: cv.pdf
+  - CV: CV.pdf
   - Portfolios: 
     - portfolios/index.md
     - 'Photogrammetry': photogrammetry/index.md
