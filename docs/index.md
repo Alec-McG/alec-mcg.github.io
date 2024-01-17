@@ -5,44 +5,38 @@
 
 <img align="left" width="200" height="200" src="images/headshot.jpg ">
 
-I am an R&D engineer with a passion for robotics and automation. 
 
-I am currently a Robotics Hardware Engineer where I specialise in robotics for maritime environments and underwater photogrammetry. 
 
-My Engineering Doctorate Thesis was in improving robotic positioning algorithms using probabilistic methods in gps denied environments and IMUs, specifically looking at pipe inspection applications. 
+I'm Alec McGregor, a passionate R&D Engineer specializing in underwater robotics and photogrammetry based in Perth, Australia. Driven by the mysteries of the deep and the potential of automation, I craft innovative solutions that unlock help democratize the subsea world.
 
-In my spare time I can usually be found in the ocean, whether it be for diving, surfing, snorkeling or chilling at the beach. 
 <br clear="left"/>
 
-## **Qualifications**
+## **Expertise** ##
 
-* Engineering Docotrate (EngD) in Robotics for Non-Destructive Evaluation (NDE)
-    * Thesis Title: Improving Robotic Positioning Capabilities for Automated Pipe Inspection 
-* Masters of Engineering with Financial Management (MEng)
-    * Thesis Title: Design and Development of a Micro-Turbine 
-    * Thesis Title: Financial Management for Engineering Companies 
-* Dive Master, Rescue Diver, Advanced Open Water
-* Commercial Skipper Coxwain Grade 2 
+### Underwater Robotics Mechanical Design ###
 
-## **Extra Curricular**
+My experience lies in engineering robust robotic designs for complex maritime environments, ensuring  maneuverability and data acquisition capabilities.
 
-* UWAUC (University of WA Underwater Club) Committee Member
-* MAAWA (Maritime Archeology Association of WA) Member
-* SUT (Society of Underwater Technology) Member
+### Advanced Underwater Photogrammetry ###
 
-## **Work Experience** 
+I leverage cutting-edge photogrammetry techniques to generate high-resolution 3D models of underwater structures and ecosystems, driving scientific research and environmental monitoring using AUVs, as well as action and digital cameras.
+Robotic Positioning & Navigation: My doctorate focused on enhancing robotic positioning algorithms using probabilistic methods and accelerometers in GPS-denied environments, particularly for pipe inspection applications.
 
-* Mechanical Engineer and Underwater Photogrammetry Specialist - Advanced Navigation 
-* Algorithms and Measurement Engineer - Siemens Mobility
-* Research Engineer - Eddyfi Technologies
-* Rotating Equipment Engineering Intern - Royal Dutch Shell
-* NDT Technician Assistant - TÜV Rheinland
+## **Impact** ##
 
-## **Links and Socials**
+My work has contributed to the development of Hydrus, a micro AUV. I have also been involved in projects monitoriing of coral reefs and submerged shipwrecks.
 
-* LinkedIn: 
-* Instagram:
-* Sketchfab: 
+I am actively involved in the Perth maritime archeology community, collaborating with researchers and industry players to advance the field of underwater exploration and surveying.
+
+## **Passion** ##
+
+Beyond the workshop, you'll find me immersed in the very environment my robots explore. Whether diving through coral gardens, navigating challenging currents, or simply appreciating the ocean, my connection to the sea fuels my passion and inspires my innovation.
+
+## **Call to Action** ##
+
+Ready to dive deeper? Let's explore how my expertise in underwater robotics and photogrammetry can contribute to your project or research. Contact me today!
+<br clear="left"/>
+
 
 
         
