@@ -1,0 +1,138 @@
+---
+title: "Dive log"
+description: | 
+  A record of recreational and scientific diving, usually on shipwrecks.
+date: "`r Sys.Date()`"
+output:
+  distill::distill_article:
+    self_contained: false
+    code_folding: true
+preview: portfolio/sharks.jpg
+---
+I am Alec
+
+<!-- I have completed the PADI Open Water (2015), PADI Advanced Open Water (2016), SDI Computer Nitrox (2017), SDI Deep (2017) and PADI Rescue (2019) diver certifications.  I have been doing scientific diving with the Western Australian Museum's Maritime Archaeology Department since 2017, as a volunteer and during employment. I am comfortable working in challenging conditions including very low visibility (\<1m) and strong surge. I specialise in [underwater photogrammetry](photogrammetry.html) for archaeological recording.  -->
+
+<!-- Below is an abridged version of my dive log, which I keep in the Day One journaling application, including photos. The data behind this post is available for [download here](portfolio/dive_log.csv). Last updated `r Sys.Date()`. -->
+
+```{r}
+library(tidyverse)
+library(patchwork)
+library(leaflet)
+library(sf)
+library(gt)
+library(DT)
+library(dplyr)
+library(ggrepel)
+theme_set(theme_minimal())
+
+dive_log <- read_csv("dive_log.csv") %>% 
+  mutate(across(c(
+    category, entry, group, nitrox, night, water),
+                as_factor))
+
+dive_log %>% mutate(depth_bins = cut(depth,
+                        breaks=c(0,10,20,30, 40),
+                        labels=c('< 10m', '10-20m',
+                                 '20-30m', '30-40m'))) %>% 
+  group_by("depth range" = depth_bins) %>% 
+  summarise(dives = n(),
+            hours = round(sum(duration)/60,1)) %>% 
+  pivot_longer(-`depth range`, names_to = 'depth') %>% 
+  pivot_wider(names_from = `depth range`) %>% 
+  gt() %>% tab_options(table.width = pct(100)) %>% 
+  fmt_number(
+    columns = 2:5,
+    rows = 1,
+    decimals = 0
+  )
+```
+
+```{r fig.height=2.5, fig.width=7}
+
+
+depth_hist <- ggplot(dive_log) + 
+  geom_histogram(aes(depth), binwidth = 1,
+                 fill = "#48497F", alpha = 0.9) +
+  geom_vline(xintercept = 18, lty=2) +
+  labs(
+    title = paste0(nrow(dive_log),
+                   " dives since 2007"),
+    subtitle = paste0(sum(dive_log$depth > 18),
+                      ' dives deeper than 18m'))
+
+time_hist <- ggplot(dive_log) + 
+  geom_histogram(aes(duration), binwidth = 5,
+                 fill = "#48497F", alpha = 0.9) + 
+  geom_vline(xintercept = mean(dive_log$duration), lty=2) +
+  labs(
+    title = paste0(round(sum(dive_log$duration)/60),
+      " hours underwater"),
+    subtitle = paste0("mean dive time is ",
+                         round(mean(dive_log$duration)), ' mins'))
+
+depth_hist + time_hist
+```
+
+```{r fig.height=2.5, fig.width=7}
+
+dive_log_training <- filter(dive_log, category == "Training")
+dive_log_volunteer <- filter(dive_log, category == "Volunteer")
+dive_log_work <- filter(dive_log, category == "Work")
+dive_log_recreational <- filter(dive_log, category == "Recreational")
+
+category_count <- dive_log %>% 
+  group_by(category) %>% 
+  summarise(total_count=n(), .groups = 'drop') %>%   
+  as.data.frame()
+
+
+# Get the positions
+df2 <- category_count %>% 
+  mutate(csum = rev(cumsum(rev(total_count))), 
+         pos = total_count/2 + lead(csum, 1),
+         pos = if_else(is.na(pos), total_count/2, pos))
+
+ggplot(category_count, aes(x = "" , y = total_count, fill = fct_inorder(category))) +
+  geom_col(width = 1, color = 1) +
+  coord_polar(theta = "y") +
+  scale_fill_brewer(palette = "Pastel1") +
+  geom_label_repel(data = df2,
+                   aes(y = pos, label = paste0(total_count, "%")),
+                   size = 4.5, nudge_x = 1, show.legend = FALSE) +
+  guides(fill = guide_legend(title = "Group")) +
+  theme_void()
+
+```
+
+
+```{r, layout="l-page"}
+map_labels <- paste0(dive_log$date, " ", dive_log$name)
+
+dive_log %>%
+  st_as_sf(coords=c('lon', 'lat')) %>% 
+leaflet(options=leafletOptions(
+    minZoom = 3,
+    maxZoom = 10,
+  )) %>% 
+  setView(lng = 115, lat = -26, zoom = 4) %>% 
+  addProviderTiles(provider = providers$CartoDB.Voyager) %>% 
+  addCircleMarkers(radius = 7, label = map_labels,
+                   stroke = FALSE, fillOpacity = .7,
+                   clusterOptions = markerClusterOptions(
+                     maxClusterRadius=30,
+                     spiderfyDistanceMultiplier=1.2))
+```
+
+```{r, layout="l-page"}
+dive_log %>% 
+  select(date, time, mins = duration,
+         depth, place, category, name) %>% 
+  mutate(time = substr(time,1,2)) %>% 
+datatable(filter = 'top',
+          class = 'compact nowrap',
+          options = list(scrollX = TRUE,
+                         pageLength=10,
+  order = list(list(1, 'desc'),list(2, 'desc'))
+))
+```
